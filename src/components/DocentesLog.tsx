@@ -33,9 +33,9 @@ const DocenteLogin = () => {
             </button>
           </div>
           <h2 className='text-2xl font-semibold italic'>Para ingresar como estudiante</h2>
-          {/*<Link to="###RUTA DEL OTRO COMPONENTE###">*/}
-            <h2 className='text-2xl font-semibold italic text-[rgb(10,20,225)]'>pulsa aqui</h2>
-          {/*</Link>*/}
+          <Link to="./EstudiantesLog.tsx">
+            <h2 className='text-2xl font-semibold italic text-[rgb(10,20,225)]'>Pulsa aqui</h2>
+          </Link>
         </div>
       </div>
     </div>
