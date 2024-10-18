@@ -1,25 +1,35 @@
+import { Link } from 'react-router-dom';
+import iconChaea from './iconChaea.jpg';
+import bckDocente from './bckDocente.jpg';
+
 const DocenteLogin = () => {
-    return (
-        <div className="container">
-      {/* Header delgado */}
-      <header className="header">
-        <h1>Título del Componente</h1>
+  return (
+    <div className="w-full h-full min-h-screen">
+      {/* Header con logo de chaea */}
+      <header className="bg-[rgb(207,203,203)] h-16 flex justify-center w-full">
+        <img src={iconChaea} alt="Logo Chaea" className='rounded-full'/>
       </header>
 
-      <div className="main-content">
+      {/* Contenedor principal de contenido */}
+      <div className="main-content flex w-full h-full">
         {/* Div izquierdo con la imagen */}
-        <div className="left-div">
-          <img src="ruta_de_tu_imagen.jpg" alt="Descripción de la imagen" className="imagen" />
+        <div className="w-1/2 h-screen flex justify-center items-center bg-no-repeat bg-cover" style={{ backgroundImage: `url(${bckDocente})` }}>
+          
         </div>
 
-        {/* Div derecho para el contenido que indiques después */}
-        <div className="right-div">
-          {/* Aquí puedes agregar el contenido que desees */}
-          <h2>Contenido del Div Derecho</h2>
-          <p>Agrega más contenido aquí...</p>
+        {/* Div derecho para el contenido */}
+        <div className="right-div bg-[rgb(249,245,242)] w-1/2 h-screen flex flex-col justify-center items-center space-y-12 pb-24">
+          <h1 className='text-[rgb(78,42,149)] text-5xl font-extrabold'>Bienvenid@</h1>
+          <h2 className='text-3xl font-extrabold'>Continuar como Docente</h2>
+          <div className='###BOTON GOOGLE###'></div>
+          <h2 className='text-2xl font-semibold italic'>Para ingresar como estudiante</h2>
+          {/*<Link to="###RUTA DEL OTRO COMPONENTE###">*/}
+            <h2 className='text-2xl font-semibold italic text-[rgb(10,20,225)]'>pulsa aqui</h2>
+          {/*</Link>*/}
         </div>
       </div>
     </div>
   );
 };
+
 export default DocenteLogin;
