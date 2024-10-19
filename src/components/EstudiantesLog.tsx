@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import iconChaea from './iconChaea.jpg';
-import bckEstudiante from './bckEstudiante.jpeg';
-import googleIcon from './googleIcon.png';
+import iconChaea from './icons/iconChaea.jpg';
+import bckEstudiante from './icons/bckEstudiante.jpeg';
+import googleIcon from './icons/googleIcon.png';
 
 
 const EstudianteLogin = () => {
