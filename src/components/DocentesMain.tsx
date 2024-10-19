@@ -4,37 +4,38 @@ import googleIcon from './icons/googleIcon.png';
 
 const DocentesMain = () => {
   return (
-    <div className="w-full h-full min-h-screen">
-      {/* Header con logo de chaea */}
-      <header className="bg-[rgb(207,203,203)] h-16 flex justify-center w-full">
-        <img src={iconChaea} alt="Logo Chaea" className='rounded-full'/>
-      </header>
+    <div className="w-full min-h-screen flex flex-col">
+        {/* Header con logo de chaea */}
+        <header className="bg-[rgb(229,144,144)] h-16 flex justify-end items-center w-full">
+            <img src={iconChaea} alt="Logo Chaea" className="h-full w-auto object-contain rounded-full"/>
+            <div className='w-12'></div>
+        </header>
 
-      {/* Contenedor principal de contenido */}
-      <div className="main-content flex w-full h-full">
-        {/* Div izquierdo con la imagen */}
-        <div className="w-1/2 h-screen flex justify-center items-center bg-no-repeat bg-cover" style={{ backgroundImage: `url(${bckDocente})` }}>
-          
+        {/* Barra superior */}
+        <div className='w-full h-12 bg-[rgb(168,13,13)] justify-between items-center flex flex-row'>
+            <h2 className='text-white pl-8 font-bold text-xl'>DOCENTES</h2>
+            <h2 className='text-white pr-14 font-bold text-xl'>#NOMBRE PROFESOR#</h2>
         </div>
 
-        {/* Div derecho para el contenido */}
-        <div className="right-div bg-[rgb(249,245,242)] w-1/2 h-screen flex flex-col justify-center items-center space-y-12 pb-24">
-          <h1 className='text-[rgb(78,42,149)] text-5xl font-extrabold'>Bienvenid@</h1>
-          <h2 className='text-3xl font-extrabold'>Continuar como Docente</h2>
-          <div className='###BOTON GOOGLE###'>
-            <button className="flex items-center justify-center bg-white border border-gray-300 rounded-full py-4 px-32 hover:shadow-lg transition duration-200">
-            <img 
-            src={googleIcon} 
-            alt="Google Logo" 
-            className="w-5 h-5 mr-2" 
-            />
-            <span className="text-gray-800 font-semibold text-xl">Iniciar sesión con Google</span>
-            </button>
-          </div>
-          <h2 className='text-2xl font-semibold italic'>Para ingresar como estudiante</h2>
-          
+        {/* Contenedor principal */}
+        <div className="main-content flex-grow flex w-full">
+            {/* Nav lateral izquierdo */}
+            <nav className="w-64 h-auto bg-white text-black flex flex-col items-start p-1 space-y-1">
+                <a className='pd-8'></a>
+                <a className='bg-[rgb(168,13,13)] py-2 w-full text-center font-bold text-lg text-white rounded'>Mis Grupos</a>
+                <a href="#" className="odd:bg-[rgb(255,222,222)] even:bg-white font-semibold py-3 w-full text-left rounded">Ver Grupos</a>
+                <a href="#" className="odd:bg-[rgb(255,222,222)] even:bg-white font-semibold py-3 w-full text-left rounded">Crear Grupo</a>
+            </nav>
+
+            {/* Contenido derecho */}
+            <div className="right-div bg-[rgb(217,217,217)] w-full h-auto flex flex-col justify-center items-center space-y-12 py-12">
+                {/* Añade contenido aquí */}
+            </div>
         </div>
-      </div>
+
+        {/* Footer */}
+        <footer className='w-full h-12 bg-[rgb(229,144,144)] justify-between items-center flex flex-row'>
+        </footer>
     </div>
   );
 };
