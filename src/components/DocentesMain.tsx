@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
 import iconChaea from './icons/iconChaea.jpg';
 import bckDocente from './icons/bckDocente.jpg';
 import googleIcon from './icons/googleIcon.png';
 
-const DocenteLogin = () => {
+const DocentesMain = () => {
   return (
     <div className="w-full h-full min-h-screen">
       {/* Header con logo de chaea */}
@@ -33,13 +32,11 @@ const DocenteLogin = () => {
             </button>
           </div>
           <h2 className='text-2xl font-semibold italic'>Para ingresar como estudiante</h2>
-          {/*<Link to="###RUTA DEL OTRO COMPONENTE###">*/}
-            <h2 className='text-2xl font-semibold italic text-[rgb(10,20,225)]'>Pulsa aqui</h2>
-          {/*</Link>*/}
+          
         </div>
       </div>
     </div>
   );
 };
 
-export default DocenteLogin;
+export default DocentesMain;

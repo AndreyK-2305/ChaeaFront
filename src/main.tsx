@@ -4,10 +4,11 @@ import App from './App.tsx'
 import './index.css'
 import DocenteLogin from './components/DocentesLog.tsx'
 import EstudianteLogin from './components/EstudiantesLog.tsx'
+import DocentesMain from './components/DocentesMain.tsx'
 import { Routes } from 'react-router-dom'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <EstudianteLogin />
+    <DocentesMain />
   </StrictMode>,
 )

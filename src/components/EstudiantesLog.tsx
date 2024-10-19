@@ -4,7 +4,7 @@ import bckEstudiante from './icons/bckEstudiante.jpeg';
 import googleIcon from './icons/googleIcon.png';
 
 
-const EstudianteLogin = () => {
+const EstudianteLog = () => {
     return (
       <div className="w-full h-full min-h-screen">
         {/* Header con logo de chaea */}
@@ -38,5 +38,5 @@ const EstudianteLogin = () => {
     );
   };
   
-  export default EstudianteLogin;
+  export default EstudianteLog;
   
