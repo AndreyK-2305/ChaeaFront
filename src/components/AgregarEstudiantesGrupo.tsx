@@ -3,23 +3,34 @@ import axios from 'axios';
 import Papa from 'papaparse';
 
 interface Profesor {
-  email: string;
   nombre: string;
+  email: string;
 }
 
-const crearGruposDoc: React.FC = () => {
-  const [profesores, setProfesores] = useState<Profesor[]>([]);
-  const [selectedProfesor, setSelectedProfesor] = useState<string | null>(null);
-  const [nombreGrupo, setNombreGrupo] = useState<string>('');
+interface Estudiante {
+  nombre: string;
+  email: string;
+}
+
+interface Grupo {
+  id: number;
+  nombre: string;
+  profesor: Profesor;
+  estudiantes: Estudiante[];
+}
+
+const AgregarEstudiantesGrupo: React.FC = () => {
+  const [grupos, setGrupos] = useState<Grupo[]>([]);
+  const [selectedGrupo, setSelectedGrupo] = useState<number | null>(null);
   const [emails, setEmails] = useState<string>('');
 
   useEffect(() => {
-    axios.get('http://localhost:8091/api/profesores')
+    axios.get('http://localhost:8091/api/grupos')
       .then(response => {
-        setProfesores(response.data);
+        setGrupos(response.data);
       })
       .catch(error => {
-        console.error('Error fetching profesores:', error);
+        console.error('Error fetching grupos:', error);
       });
   }, []);
 
@@ -37,8 +48,8 @@ const crearGruposDoc: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedProfesor || !nombreGrupo) {
-      alert('Por favor, completa todos los campos.');
+    if (selectedGrupo === null) {
+      alert('Por favor, selecciona un grupo.');
       return;
     }
     const emailsArray = emails.split(',').map(email => email.trim()).filter(email => email !== '');
@@ -46,47 +57,31 @@ const crearGruposDoc: React.FC = () => {
       alert('No se encontraron correos de estudiantes válidos.');
       return;
     }
-
-    const grupoDTO = {
-      nombre: nombreGrupo,
-      profesorEmail: selectedProfesor,
-      correosEstudiantes: emailsArray
-    };
-
-    axios.post('http://localhost:8091/api/grupos', grupoDTO)
+    axios.post(`http://localhost:8091/api/grupos/${selectedGrupo}/estudiantes`, emailsArray)
       .then(response => {
-        alert('Grupo creado exitosamente.');
+        alert('Estudiantes añadidos al grupo exitosamente.');
       })
       .catch(error => {
-        console.error('Error creando el grupo:', error);
-        alert('Error creando el grupo.');
+        console.error('Error agregando estudiantes al grupo:', error);
+        alert('Error agregando estudiantes al grupo.');
       });
   };
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Crear Grupo</h1>
+      <h1 className="text-2xl font-bold mb-4">Agregar Estudiantes a Grupo</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700">Nombre del Grupo:</label>
-          <input
-            type="text"
-            className="mt-1 block w-full p-2 border border-gray-300 rounded"
-            value={nombreGrupo}
-            onChange={e => setNombreGrupo(e.target.value)}
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Selecciona un Profesor:</label>
+          <label className="block text-gray-700">Selecciona un Grupo:</label>
           <select
             className="mt-1 block w-full p-2 border border-gray-300 rounded"
-            value={selectedProfesor ?? ''}
-            onChange={e => setSelectedProfesor(e.target.value)}
+            value={selectedGrupo ?? ''}
+            onChange={e => setSelectedGrupo(Number(e.target.value))}
           >
-            <option value="" disabled>Selecciona un profesor</option>
-            {profesores.map(profesor => (
-              <option key={profesor.email} value={profesor.email}>
-                {profesor.nombre}
+            <option value="" disabled>Selecciona un grupo</option>
+            {grupos.map(grupo => (
+              <option key={grupo.id} value={grupo.id}>
+                {grupo.nombre} - Profesor: {grupo.profesor.nombre}
               </option>
             ))}
           </select>
@@ -110,11 +105,11 @@ const crearGruposDoc: React.FC = () => {
           />
         </div>
         <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">
-          Crear Grupo
+          Agregar Estudiantes
         </button>
       </form>
     </div>
   );
 };
 
-export default crearGruposDoc;
+export default AgregarEstudiantesGrupo;
