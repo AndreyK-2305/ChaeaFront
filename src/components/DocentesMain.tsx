@@ -1,9 +1,10 @@
 import { SetStateAction, useState } from 'react';
 import iconChaea from './icons/iconChaea.jpg'; // Importa tu icono
-import VerGruposDoc from './verGruposDoc.tsx'; 
+import VerGruposDoc from './verGruposDoc.tsx';
 import CrearGruposDoc from './crearGruposDoc.tsx';
 import AgregarEstudiantesGrupo from './AgregarEstudiantesGrupo.tsx';
 import EliminarEstudiantesGrupo from './EliminarEstudiantesGrupo.tsx';
+import BorrarGrupo from './BorrarGrupo.tsx';
 
 const DocentesMain = () => {
   const [selectedSection, setSelectedSection] = useState('verGrupos'); // Estado para controlar la sección seleccionada
@@ -57,6 +58,13 @@ const DocentesMain = () => {
           >
             Eliminar Estudiantes
           </a>
+          <a
+            href="#"
+            onClick={() => handleClick('borrarGrupo')}
+            className={`odd:bg-[rgb(255,222,222)] even:bg-white font-bold py-3 w-full text-left rounded pl-4 border ${selectedSection === 'borrarGrupo' ? 'border-2 border-[rgb(168,13,13)] bg-[rgb(229,144,144)]' : 'border-transparent'}`}
+          >
+            Borrar Grupo
+          </a>
         </nav>
         {/* Div que va a cambiar según la selección */}
         <div className="right-div bg-[rgb(217,217,217)] w-full h-auto flex flex-col justify-center items-center space-y-12 py-12">
@@ -65,6 +73,7 @@ const DocentesMain = () => {
           {selectedSection === 'crearGrupo' && <CrearGruposDoc />}
           {selectedSection === 'agregarEstudiantes' && <AgregarEstudiantesGrupo />}
           {selectedSection === 'eliminarEstudiantes' && <EliminarEstudiantesGrupo />}
+          {selectedSection === 'borrarGrupo' && <BorrarGrupo />}
         </div>
       </div>
       {/* Footer */}

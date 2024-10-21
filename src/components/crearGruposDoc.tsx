@@ -42,17 +42,11 @@ const crearGruposDoc: React.FC = () => {
       return;
     }
     const emailsArray = emails.split(',').map(email => email.trim()).filter(email => email !== '');
-    if (emailsArray.length === 0) {
-      alert('No se encontraron correos de estudiantes válidos.');
-      return;
-    }
-
     const grupoDTO = {
       nombre: nombreGrupo,
       profesorEmail: selectedProfesor,
-      correosEstudiantes: emailsArray
+      correosEstudiantes: emailsArray.length > 0 ? emailsArray : null  // Permitir grupos sin estudiantes
     };
-
     axios.post('http://localhost:8091/api/grupos', grupoDTO)
       .then(response => {
         alert('Grupo creado exitosamente.');
